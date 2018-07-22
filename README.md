@@ -1,14 +1,45 @@
 # Live environment for zencargo
 
+All modules we use are in a [separate repository][zencargo-modules].
+
+## Requirements
+
+In order to use this project, you will need
+
+ - [ ] An [AWS account](http://aws.amazon.com) with API access.
+ - [ ] Locally configured [AWS credentials][aws-credentials].
+   - [ ] setup an AWS profile `zencargo-stage` for stage
+   - [ ] setup an AWS profile `zencargo-prod` for prod
+ - [ ] Download and install [Terraform][terraform].
+ - [ ] Download and install [Terragrunt][terragrunt.io]
+
 ## Usage
 
-It's assumed you have two profiles:
+Each component lives in its own folder in a top level environment folder.
+For example the code to provision our staging VPC lives in `stage/vpc`.
 
-* `zencargo-stage` for all definitions in stage
-* `zencargo-prod` for all definitions in prod
+```shell
+$ terragrunt init
+```
 
-This allows you to use your own AWS account to develop and test
-infrastructure without impacting the production environment.
+This is the first command that should be run after writing a new 
+Terraform configuration or cloning an existing one from
+version control. It is safe to run this command multiple times.
+
+```shell
+$ terragrunt plan
+```
+
+Terraform performs a refresh, unless explicitly disabled, and then 
+determines what actions are necessary to achieve the desired state 
+specified in the configuration files.
+
+```shell
+$ terragrunt apply
+```
+
+This command is used to apply the changes required to reach the
+desired state of the configuration.
 
 ## Best practices
 
@@ -24,3 +55,8 @@ You can use local modules when trying things out before creating versions
 ## Reading material
 
 * https://davidbegin.github.io/terragrunt/
+
+[terragrunt.io]: https://github.com/gruntwork-io/terragrunt
+[terraform]: https://www.terraform.io/downloads.html
+[aws-credentials]: http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration
+[zencargo-modules]: https://github.com/zencargo/infrastructure-modules
