@@ -60,3 +60,17 @@ You can use local modules when trying things out before creating versions
 [terraform]: https://www.terraform.io/downloads.html
 [aws-credentials]: http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration
 [zencargo-modules]: https://github.com/zencargo/infrastructure-modules
+
+## FAQ
+
+Q) AWS IAM linked role already exists, how do I import that role?
+
+A) You have to find the iam role in the console and add it under control of terraform like this:
+
+    terragrunt import aws_iam_service_linked_role.elasticbeanstalk arn:aws:iam::123456789012:role/aws-service-role/elasticbeanstalk.amazonaws.com/AWSServiceRoleForElasticBeanstalk
+
+Q) AWS IAM instance profile import
+
+A) same way:
+
+    terragrunt import aws_iam_instance_profile.beanstalk_ec2 app-instance-profile-1
