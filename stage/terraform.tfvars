@@ -4,10 +4,10 @@ terragrunt = {
     backend = "s3"
     config {
       encrypt        = true
-      bucket         = "stage-terraform-state"
+      bucket         = "722849216534-terraform-state"
       key            = "stage/${path_relative_to_include()}/terraform.tfstate"
       region         = "eu-west-1"
-      dynamodb_table = "stage-terraform-locks"
+      dynamodb_table = "722849216534-stage-terraform-locks"
       profile        = "zencargo-stage"
     }
   }

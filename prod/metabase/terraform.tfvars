@@ -1,6 +1,6 @@
 terragrunt = {
   terraform = {
-    source = "git::git@github.com:zencargo/infrastructure-modules.git//metabase?ref=v0.0.27"
+    source = "git::git@github.com:zencargo/infrastructure-modules.git//metabase?ref=v0.0.30"
   }
 
   dependencies = {
