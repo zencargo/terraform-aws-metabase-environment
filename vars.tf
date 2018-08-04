@@ -51,6 +51,10 @@ variable "profile" {
   description = "The AWS credentials profile to use"
 }
 
+variable "cidr_block" {
+  default     = "10.0.0.0/16"
+  description = "CIDR block configuration"
+}
 #===================== Domain Setup =====================#
 variable "zone_id" {
   description = "Route53 zone ID. For more info see https://docs.aws.amazon.com/general/latest/gr/rande.html."

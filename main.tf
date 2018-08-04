@@ -62,7 +62,7 @@ module "vpc" {
   namespace  = "${var.namespace}"
   name       = "${var.name}"
   stage      = "${var.stage}"
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "${var.cidr_block}"
 }
 
 module "subnets" {
