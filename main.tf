@@ -8,16 +8,6 @@ terraform {
   backend "s3" {}
 }
 
-module "metabase_label" {
-  source     = "git::https://github.com/cloudposse/terraform-null-label.git?ref=master"
-  namespace  = "eg"
-  stage      = "prod"
-  name       = "bastion"
-  attributes = ["public"]
-  delimiter  = "-"
-  tags       = "${map("BusinessUnit", "XYZ", "Snapshot", "true")}"
-}
-
 variable "max_availability_zones" {
   default = "3"
 }
