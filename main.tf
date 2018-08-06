@@ -112,3 +112,16 @@ module "rds_instance" {
   backup_retention_period     = 7
   backup_window               = "22:00-03:00"
 }
+
+module "vpc_peering" {
+  source                                    = "git@github.com:cloudposse/terraform-aws-vpc-peering.git"
+  namespace                                 = "${var.namespace}"
+  stage                                     = "${var.stage}"
+  name                                      = "${var.name}"
+  delimiter                                 = "${var.delimiter}"
+  requestor_vpc_id                          = "${module.vpc.vpc_id}"
+  acceptor_vpc_id                           = "${var.acceptor_vpc_id}"
+  acceptor_allow_remote_vpc_dns_resolution  = true
+  requestor_allow_remote_vpc_dns_resolution = true
+  auto_accept                               = true
+}

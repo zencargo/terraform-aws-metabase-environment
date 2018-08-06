@@ -171,3 +171,8 @@ variable "rds_snapshot_identifier" {
   description = "When provided, that snapshot will be restored."
 }
 
+# VPC peering setup
+variable "acceptor_vpc_id" {
+  type        = "string"
+  description = "ID of the VPC to accept from: vpc-e2872285"
+}
