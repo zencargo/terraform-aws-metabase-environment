@@ -27,3 +27,8 @@ output "eb_security_group_id" {
   value       = "${module.elastic_beanstalk_environment.security_group_id}"
   description = "EB security group id"
 }
+
+output "vpc_id" {
+  value       = "${module.vpc.vpc_id}"
+  description = "VCP id where metabase resides"
+}
